@@ -6,6 +6,7 @@ import java.util.Date;
 public class Seller implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    private static final String tableName = "seller";
     private Integer id;
     private String name;
     private String email;
@@ -73,6 +74,10 @@ public class Seller implements Serializable {
 
     public void setDepartment(Department department) {
         this.department = department;
+    }
+
+    public static String getTablename() {
+        return tableName;
     }
 
     @Override
