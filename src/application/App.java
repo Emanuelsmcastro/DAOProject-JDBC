@@ -16,6 +16,6 @@ public class App {
         // 3000.0, dp);
         // System.out.println(seller);
         DaoBase<Seller> sellerDao = DaoFactory.createSellerDao(DB.getConnection(false));
-        System.out.println(sellerDao.findById(3));
+        System.out.println(sellerDao.findById(29));
     }
 }

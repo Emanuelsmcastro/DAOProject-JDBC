@@ -55,8 +55,7 @@ public class SellerDaoJDBC implements DaoBase<Seller> {
             rs = st.executeQuery();
 
             if (rs.next()) {
-                return new Seller(id, rs.getString("Name"), rs.getString("Email"), rs.getDate("BirthDate"),
-                        rs.getDouble("BaseSalary"), new Department(rs.getInt("DepartmentId"), rs.getString("DepName")));
+                return instantiateSeller(rs);
             }
 
         } catch (SQLException e) {
@@ -74,4 +73,8 @@ public class SellerDaoJDBC implements DaoBase<Seller> {
         throw new UnsupportedOperationException("Unimplemented method 'findAll'");
     }
 
+    private Seller instantiateSeller(ResultSet rs) throws SQLException {
+        return new Seller(rs.getInt("Id"), rs.getString("Name"), rs.getString("Email"), rs.getDate("BirthDate"),
+                rs.getDouble("BaseSalary"), new Department(rs.getInt("DepartmentId"), rs.getString("DepName")));
+    }
 }
