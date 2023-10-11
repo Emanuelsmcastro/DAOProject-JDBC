@@ -15,6 +15,6 @@ public class App {
         // System.out.println(seller);
         DaoBase<Seller> sellerDao = DaoFactory.createSellerDao(DB.getConnection(false));
         // System.out.println(sellerDao.findById(29));
-        System.out.println(((SellerDaoJDBC) sellerDao).findByDepartmentId(1));
+        System.out.println(((SellerDaoJDBC) sellerDao).findAll());
     }
 }

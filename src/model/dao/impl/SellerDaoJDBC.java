@@ -70,8 +70,30 @@ public class SellerDaoJDBC implements DaoBase<Seller> {
 
     @Override
     public List<Seller> findAll() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        List<Seller> sellers = new ArrayList<>();
+        Map<Integer, Department> map = new HashMap<>();
+
+        try {
+            st = conn.prepareStatement(
+                    "SELECT seller.*, department.Name as DepName " +
+                            "FROM seller INNER JOIN department " +
+                            "ON seller.DepartmentId = department.Id " +
+                            "ORDER BY Name");
+
+            rs = st.executeQuery();
+
+            while (rs.next()) {
+                sellers.add(instantiateSeller(rs, map));
+            }
+            return sellers;
+        } catch (SQLException e) {
+            throw new DbException("Error: " + e.getMessage());
+        } finally {
+            DB.closeStatement(st);
+            DB.closeResultSet(rs);
+        }
     }
 
     public List<Seller> findByDepartmentId(Integer id) {
