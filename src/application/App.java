@@ -20,6 +20,7 @@ public class App {
         // System.out.println(sellerDao.findById(29));
         ((SellerDaoJDBC) sellerDao).findAll().forEach(System.out::println);
         sellerDao.update(new Seller(3, "Emanuel", "emanuel@gmail.com", new Date(), 1200.0, dp));
+        // sellerDao.deleteById(4);
 
     }
 }
