@@ -12,14 +12,22 @@ import model.entities.Seller;
 public class App {
     public static void main(String[] args) throws Exception {
         Department dp = new Department(1, "Lib");
-        // System.out.println(dp);
-        // Seller seller = new Seller(21, "Emanuel", "emanuel@gmail.com", new Date(),
-        // 3000.0, dp);
-        // System.out.println(seller);
+
+        // Create connection
         DaoBase<Seller> sellerDao = DaoFactory.createSellerDao(DB.getConnection(false));
-        // System.out.println(sellerDao.findById(29));
+
+        System.out.println("Find by id:");
+        System.out.println(sellerDao.findById(29));
+
+        System.out.println("Find all:");
         ((SellerDaoJDBC) sellerDao).findAll().forEach(System.out::println);
+
+        System.out.println("Inserting...");
+        sellerDao.insert(new Seller(null, "Emanuel", "emanuel@gmail.com", new Date(), 1200.0, dp));
+
+        System.out.println("Updating:");
         sellerDao.update(new Seller(3, "Emanuel", "emanuel@gmail.com", new Date(), 1200.0, dp));
+        
         // sellerDao.deleteById(4);
 
     }
