@@ -1,22 +1,6 @@
-<<<<<<< HEAD
-## Getting Started
-
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
-
-## Folder Structure
-
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
-=======
 # DAOProject-JDBC
->>>>>>> 4df6fd2aea2a58de37d2e2805fea3c09ba48e461
+
+Esse projeto é um CRUD simples para os modelos Department e Seller, utilizando o JBDC e o padrão de projetos DAO(Data Access Object).
+
+# Resultado:
+
