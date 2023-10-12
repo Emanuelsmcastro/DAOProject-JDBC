@@ -20,15 +20,18 @@ public class App {
         System.out.println(sellerDao.findById(29));
 
         System.out.println("Find all:");
-        ((SellerDaoJDBC) sellerDao).findAll().forEach(System.out::println);
+        sellerDao.findAll().forEach(System.out::println);
+
+        System.out.println("Find all by department Id:");
+        ((SellerDaoJDBC) sellerDao).findByDepartmentId(1).forEach(System.out::println);
 
         System.out.println("Inserting...");
         sellerDao.insert(new Seller(null, "Emanuel", "emanuel@gmail.com", new Date(), 1200.0, dp));
 
         System.out.println("Updating:");
         sellerDao.update(new Seller(3, "Emanuel", "emanuel@gmail.com", new Date(), 1200.0, dp));
-        
-        // sellerDao.deleteById(4);
 
+        // sellerDao.deleteById(4);
+        DB.closeConnection();
     }
 }
