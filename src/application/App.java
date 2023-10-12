@@ -28,7 +28,7 @@ public class App {
         System.out.println("Inserting...");
         sellerDao.insert(new Seller(null, "Emanuel", "emanuel@gmail.com", new Date(), 1200.0, dp));
 
-        System.out.println("Updating:");
+        System.out.println("Updating...");
         sellerDao.update(new Seller(3, "Emanuel", "emanuel@gmail.com", new Date(), 1200.0, dp));
 
         // sellerDao.deleteById(4);
