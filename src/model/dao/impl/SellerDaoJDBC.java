@@ -69,8 +69,39 @@ public class SellerDaoJDBC implements DaoBase<Seller> {
 
     @Override
     public void update(Seller obj) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        PreparedStatement st = null;
+
+        try {
+            st = conn.prepareStatement(
+                    "UPDATE seller " +
+                            "SET Name = ?, " + "Email = ?, " + "BirthDate = ?, " + "BaseSalary = ?, "
+                            + "DepartmentId = ? " +
+                            "WHERE Id = ?");
+
+            st.setString(1, obj.getName());
+            st.setString(2, obj.getEmail());
+            st.setDate(3, new java.sql.Date(obj.getBirthDate().getTime()));
+            st.setDouble(4, obj.getBaseSalary());
+            st.setInt(5, obj.getDepartment().getId());
+            st.setInt(6, obj.getId());
+
+            int rows = st.executeUpdate();
+            if (rows == 0) {
+                throw new DbException("Update seller error!");
+            }
+            conn.commit();
+
+        } catch (SQLException e) {
+            try {
+                conn.rollback();
+                System.out.println("Apply Rollback: " + e.getMessage());
+            } catch (SQLException e1) {
+                System.out.println("Rollback Error: " + e1.getMessage());
+            }
+            throw new DbException("Error: " + e.getMessage());
+        } finally {
+            DB.closeStatement(st);
+        }
     }
 
     @Override
